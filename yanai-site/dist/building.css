@@ -1,0 +1,84 @@
+/* Three real construction states share the same isometric footprint. */
+.building-foundation{opacity:0;transition:opacity .35s;pointer-events:none}
+.build-story[data-chapter="0"] .building-foundation{opacity:1;transition-delay:.12s}
+.foundation-excavation{fill:#0b2a23;stroke:#728a66;stroke-width:1.2}
+.foundation-soil{fill:#365343;stroke:#8b9f70;stroke-width:1}
+.foundation-bed{fill:#4d6853;stroke:#aec391;stroke-width:1.3}
+.foundation-beam{fill:none;stroke:#a2b58d;stroke-width:9;stroke-linejoin:round}
+.foundation-footing{fill:#cad5af;stroke:#d6eb9f;stroke-width:1}
+.foundation-rebar{stroke:#d2ee80;stroke-width:1.4;fill:none}
+.build-art .building-level{opacity:0;transform:translateY(20px);transition:opacity .3s,transform .6s cubic-bezier(.22,1,.36,1);transition-delay:0s}
+.build-art .building-level path{stroke-dasharray:none;stroke-dashoffset:0}
+.build-story[data-chapter="1"] .building-level{opacity:1;transform:none;transition-delay:calc(var(--floor-order)*70ms)}
+.build-story[data-chapter="2"] .building-level{opacity:0;transform:none}
+.building-finish{opacity:0;visibility:hidden;transition:opacity .55s,visibility 0s .55s;pointer-events:none}
+.build-story[data-chapter="2"] .building-finish{opacity:1;visibility:visible;transition:opacity .75s,visibility 0s}
+.finish-envelope{transform:translateY(9px);transition:transform .85s cubic-bezier(.22,1,.36,1)}
+.build-story[data-chapter="2"] .finish-envelope{transform:none}
+.finish-wall{stroke:#d1ddbd;stroke-width:1.2}
+.finish-wall-left{fill:#b3c8ab}.finish-wall-right{fill:#e6ebd7}
+.finish-course{fill:none;stroke:#839e80;stroke-width:1;opacity:.65}
+.window-reveal{fill:#123b32;stroke:#edf4d8;stroke-width:2}
+.window-pane{fill:#38665b;stroke:#527e6b;stroke-width:.6}
+.window-mullion{stroke:#b2cdb6;stroke-width:1.5;fill:none}
+.window-reflection{stroke:#97bbaa;stroke-width:2.2;opacity:.55;fill:none}
+.window-sill{stroke:#f2f3e1;stroke-width:2.7;fill:none}
+.finish-window{opacity:0;transition:opacity .3s}
+.build-story[data-chapter="2"] .finish-window{opacity:1;transition-delay:calc(160ms + var(--window-order)*45ms)}
+.finish-roof{fill:#dbe4ca;stroke:#e9efd8;stroke-width:1.4}
+.finish-parapet{fill:#a6bc9e;stroke:#edf2db;stroke-width:1}
+.roof-inset{fill:#c3d2b6;stroke:#92aa89;stroke-width:1}
+.finish-plinth{fill:none;stroke:#7e997e;stroke-width:6}
+.entrance-frame{fill:#eaf0da;stroke:#78967e;stroke-width:1}
+.entrance-glass{fill:#183f35;stroke:#688c74;stroke-width:1}
+.entrance-mullion{fill:none;stroke:#9cb89b;stroke-width:1.5}
+.entrance-handle{stroke:#e9efc8;stroke-width:2;fill:none}
+.entrance-canopy{fill:#e3ecd1;stroke:#eff5dc;stroke-width:1}
+.canopy-edge{fill:#8ca88d;stroke:#b9cda9;stroke-width:.8}
+.entrance-step,.entrance-paving{fill:#b0bfa4;stroke:#d7e2c6;stroke-width:1}
+.step-riser{fill:#719078;stroke:#aabf9c;stroke-width:.8}
+.paving-joint{stroke:#799177;stroke-width:1;fill:none}
+.garden-bed{fill:#345541;stroke:#a6bf8e;stroke-width:1}
+.garden-edge{fill:#8da784;stroke:#bbd29e;stroke-width:1}
+.finish-plant{fill:#8eb566;stroke:#bbd78b;stroke-width:1}
+.finish-plant path{fill:none;stroke:#4f794c}
+.finish-landscape{opacity:0;transition:opacity .4s}
+.build-story[data-chapter="2"] .finish-landscape{opacity:1;transition-delay:.35s}
+.site-crane{transition:opacity .7s}
+.build-story[data-chapter="2"] .site-crane{opacity:.16}
+.build-story[data-chapter="2"] .crane-rig{opacity:0;animation:none}
+.build-story[data-chapter="2"] .site-props,.build-story[data-chapter="2"] .site-worker:nth-child(4){opacity:0;pointer-events:none}
+.site-props,.site-worker:nth-child(4){transition:opacity .35s}
+/* The scene remains readable on small screens, with no separate mobile state. */
+@media(max-width:600px){.build-art svg{max-height:360px}.build-art{margin-top:24px}}
+.motion-off .build-art *{transition:none!important;animation:none!important}
+@media(prefers-reduced-motion:reduce){.build-art *{transition:none!important;animation:none!important}}
+
+/* Compact screens show each phase while the entire illustration is in view. */
+.build-viewport-probe{position:fixed;width:0;height:100svh;visibility:hidden;pointer-events:none;contain:strict}
+.build-mobile-track[hidden]{display:none}
+.build-mobile-track{min-width:0}
+.build-mobile-frame{position:relative}
+@media(max-width:1000px){
+ .experience-ready .build-story.build-mobile .build-stage{display:block;overflow:visible;padding:36px 24px 30px}
+ .build-mobile .build-copy{max-width:650px;margin-inline:auto;margin-bottom:18px}
+ .build-mobile .build-copy h2{font-size:clamp(34px,5.8vw,48px)}
+ .build-mobile .build-intro{max-width:48ch}
+ .build-mobile .build-scroll{display:none}
+ .build-mobile-track{width:min(100%,680px);margin-inline:auto}
+ .build-mobile-frame .build-chapters{justify-content:center;margin:0 0 12px;gap:8px}
+ .build-mobile-frame .build-chapters button{min-height:44px;flex:1;max-width:160px;padding:9px 10px}
+ .build-mobile-frame .build-art{width:100%;margin:0 auto 10px}
+ .build-mobile-frame .build-art svg{display:block;width:100%;height:var(--scene-art-height,280px);max-height:none}
+ .build-mobile-frame .build-coordinate{display:none}
+ .build-mobile-frame .build-captions{display:grid;max-width:540px;min-height:0;margin-inline:auto;text-align:center}
+ .build-mobile-frame .build-caption{grid-area:1 / 1;min-width:0}
+ .build-mobile-frame .build-caption[hidden]{display:block;visibility:hidden;pointer-events:none}
+ .build-mobile-frame .build-caption h3{font-size:20px;line-height:1.4}
+ .build-mobile-frame .build-caption p{font-size:14px;line-height:1.65}
+ .build-mobile .build-stage>.build-next{display:flex;width:fit-content;margin:28px auto 0;min-height:44px}
+ .build-mobile .finish-window{transition-delay:0s!important}
+ .build-mobile .building-level{transition-duration:.25s,.42s}
+ .build-mobile .building-finish{transition-duration:.45s,0s}
+}
+@media(max-width:360px){.experience-ready .build-story.build-mobile .build-stage{padding-inline:18px}.build-mobile-frame .build-chapters button{font-size:12px}}

@@ -1,0 +1,523 @@
+/* A shared control/surface vocabulary, applied after section-specific styles. */
+:root{--ui-radius:12px;--ui-card:20px;--ui-border:#ccd7c3;--ui-soft:#edf1e5;--ui-focus:#66883a;--ui-shadow:0 18px 55px #153e3418}
+html{scrollbar-gutter:stable}
+.button,.header .header-cta,.cinema .hero-actions-row>.button,.mobile-contact a{border-radius:var(--ui-radius)}
+.cinema .hero-actions-row>.button>span{border-radius:8px}
+.header .menu-toggle{border-radius:var(--ui-radius);border-color:var(--ui-border);background:var(--cream)}
+.header .menu-toggle:hover,.header .menu-toggle[aria-expanded=true]{background:var(--ui-soft);border-color:#8ba572}
+:is(button,a,input,select,textarea,summary):focus-visible{outline:2px solid var(--ui-focus);outline-offset:3px}
+.contact-form :is(input:not([type=checkbox]),select,textarea){border-radius:var(--ui-radius);border-color:var(--ui-border);background:#fffdf8}
+.contact-form :is(input,textarea):focus{border-color:#66883a;box-shadow:0 0 0 3px #7fae3e14}
+.welcome-options>button,.explorer-tabs button,.questions details,.steps li{border-radius:var(--ui-card)}
+.explorer-panel,.field figure,.contact-form{border-radius:24px}
+.about-visual>img,.project-welcome.wrap{border-radius:24px}
+.contact.section{background:linear-gradient(135deg,#edf1e5,#e5edda);border-radius:0}
+.language-picker.enhanced{border:0;padding:0;min-height:44px;background:transparent}
+.ui-native-select[hidden]{display:none!important}
+.choice-trigger{display:flex;align-items:center;justify-content:space-between;gap:9px;min-height:46px;padding:10px 13px;border:1px solid var(--ui-border);border-radius:var(--ui-radius);background:var(--cream);color:var(--ink);font:500 13px/1.5 var(--font);cursor:pointer;text-align:start;transition:background .2s,border-color .2s,box-shadow .2s}
+.choice-trigger:hover,.choice-trigger[aria-expanded=true]{background:var(--ui-soft);border-color:#8ba572}
+.choice-trigger svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.6;flex-shrink:0}
+.choice-trigger>svg:last-child{width:14px;height:14px;transition:rotate .25s}
+.choice-trigger[aria-expanded=true]>svg:last-child{rotate:180deg}
+.choice-value{min-width:0}
+.contact-form .choice-trigger{width:100%;min-height:52px;font-size:15px;margin-top:8px;background:#fffdf8}
+.choice-open{overflow:hidden;scrollbar-gutter:stable}
+dialog.choice-dialog{position:fixed;inset:0;width:min(440px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;padding:24px;border:1px solid var(--ui-border);border-radius:24px;background:var(--cream);color:var(--ink);box-shadow:0 28px 100px #061f2440;overflow-y:auto;overscroll-behavior:contain}
+dialog.choice-dialog::backdrop{background:#102f285e;backdrop-filter:blur(4px)}
+.choice-dialog[open]{animation:choice-arrive .24s cubic-bezier(.22,1,.36,1) both}
+.choice-header{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-bottom:19px;margin-bottom:16px;border-bottom:1px solid var(--ui-border)}
+.choice-dialog .choice-header h2{font:650 24px/1.4 var(--font);letter-spacing:0;margin:0}
+.choice-close{display:grid;place-items:center;flex-shrink:0;width:44px;height:44px;padding:0;border:1px solid var(--ui-border);border-radius:var(--ui-radius);background:transparent;color:var(--ink);font:300 28px/1 Arial}
+.choice-close:hover{background:var(--ui-soft)}
+.choice-options{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice-option{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0;min-height:62px;padding:14px 12px;text-align:start;border:1px solid var(--ui-border);border-radius:var(--ui-radius);background:#fffdf8;color:var(--ink);font:500 16px/1.6 var(--font);transition:background .2s,border-color .2s,transform .2s}
+.choice-option:hover{background:var(--ui-soft);border-color:#8ba572}
+.choice-option[aria-selected=true]{background:#e5efcf;border-color:#8ca85e}
+.choice-check{display:grid;place-items:center;flex-shrink:0;width:22px;height:22px;border-radius:50%;border:1px solid #bdcbb0;color:transparent;font:14px/1 Arial}
+.choice-option[aria-selected=true] .choice-check{background:var(--ink);border-color:var(--ink);color:var(--lime)}
+:is(.choice-option,.choice-value) :lang(th),.choice-value:lang(th){font-family:YanaiThai,sans-serif}
+:is(.choice-option,.choice-value) :lang(hi),.choice-value:lang(hi){font-family:YanaiHindi,sans-serif}
+:is(.choice-option,.choice-value) :lang(si),.choice-value:lang(si){font-family:YanaiSinhala,sans-serif}
+@media(max-width:1000px){.header nav.open{inset-inline:16px;top:calc(100% + 8px);border:1px solid var(--ui-border);border-radius:var(--ui-card);box-shadow:var(--ui-shadow);padding:10px}.header nav a{border-radius:10px}.header nav a:hover{background:var(--ui-soft)}.header nav a::after{display:none}}
+@media(max-width:600px){
+ .mobile-contact .mobile-whatsapp{flex:0 0 46px;padding:10px;background:var(--ui-soft);border-color:var(--ui-border)}
+ .mobile-whatsapp svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.6}
+ body:has(.mobile-contact.visible) .floating-contact{visibility:hidden;pointer-events:none}
+ .mobile-contact a:first-child{min-width:0;font-size:12px;gap:8px;padding-inline:12px}
+ .language-picker .choice-trigger{min-height:44px;padding:8px 10px;gap:6px;font-size:12px}
+ dialog.choice-dialog{inset:auto 0 0;width:calc(100% - 24px);margin:12px auto max(12px,env(safe-area-inset-bottom));max-height:calc(100dvh - 32px);padding:20px;border-radius:24px}
+ .choice-header{padding-bottom:14px;margin-bottom:14px}.choice-dialog .choice-header h2{font-size:22px}
+ .choice-options{gap:8px}.choice-option{min-height:60px;font-size:15px;padding:12px 10px}
+ .questions details,.welcome-options>button,.explorer-tabs button,.steps li{border-radius:16px}
+ .explorer-panel,.field figure,.contact-form{border-radius:20px}
+}
+@media(max-width:360px){.language-picker .choice-trigger{padding-inline:7px;gap:5px;font-size:11px}.language-picker .choice-trigger>svg:first-child{display:none}.choice-option{font-size:14px;padding:10px 8px}.choice-check{width:19px;height:19px}.choice-dialog .choice-options{gap:7px}}
+@keyframes choice-arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.choice-dialog[open]{animation:none}.choice-trigger,.choice-option{transition:none}}
+.motion-off .choice-dialog[open]{animation:none}
+.soft-reveal{transition-duration:.55s,.7s,.55s}
+.soft-pending{translate:0 22px;filter:blur(2px)}
+/* Mobile utility controls stay together at the physical left edge. */
+@media(max-width:1000px){
+ .header-inner.wrap{display:grid;grid-template-columns:44px auto minmax(0,1fr);gap:10px;direction:ltr}
+ .header .language-picker{grid-area:1 / 2;margin:0;padding:0;justify-self:start}
+ .header .menu-toggle{grid-area:1 / 1}
+ .header .brand{grid-area:1 / 3;justify-self:end;min-width:0}
+ html[dir=rtl] .header .brand,html[dir=rtl] .header nav{direction:rtl}
+ html[dir=ltr] .header .brand,html[dir=ltr] .header nav{direction:ltr}
+}
+@media(max-width:360px){.header-inner.wrap{gap:7px}}
+/* Carry the approved mobile palette and lighter media treatment to desktop. */
+@media(min-width:1251px){
+ .cinema{--hero-gutter:max(40px,calc((100% - 1560px)/2));grid-template-columns:minmax(0,.82fr) minmax(0,1.08fr);column-gap:64px}
+}
+@media(min-width:1001px){
+ .cinema{padding-block:52px 64px}
+ .cinema-copy>.eyebrow{margin-bottom:22px}
+ .cinema h1{margin-bottom:24px}
+ .cinema .hero-service{margin-bottom:24px}
+ .cinema-film,.cinema-film::before{border-radius:16px}
+ .cinema-film::before{inset:10px -9px -10px 9px}
+ .film-window{border-radius:15px}
+ .cinema .film-caption{position:static;margin:22px 0 0}
+ .cinema+.trust-bar{background:var(--ui-soft);color:var(--ink);border-block:1px solid #d9e2d0}
+ .cinema+.trust-bar .trust-inner{min-height:80px}
+ .cinema+.trust-bar .trust-inner i{background:#dde8c8;color:#36522a}
+ .cinema+.trust-bar .trust-inner :is(span,a):hover{color:var(--ink)}
+}
+/* Lightweight mobile motion: retain reveals and interaction, avoid blur/filters
+   on scrolling layers and continuous SVG repaint on older phones. */
+@media(max-width:1000px),(pointer:coarse){
+ .header.scrolled{background:var(--cream);backdrop-filter:none;box-shadow:0 1px 0 var(--ui-border)}
+ .mobile-contact{background:var(--cream);backdrop-filter:none;box-shadow:none}
+ .floating-contact,.motion-toggle,.field figcaption span:last-child{backdrop-filter:none}
+ .build-art svg{filter:none}
+ .build-story .crane-rig,.build-story .worker-gesture,.build-story .worker-carry{animation:none}
+ .soft-reveal,.soft-pending,.soft-arrived{filter:none}
+ .soft-reveal{transition-property:opacity,translate;transition-duration:.38s,.45s;transition-delay:0ms}
+ .welcome-options>button.soft-reveal,.questions details.soft-reveal,.explorer-tabs button.soft-reveal,.steps>li.soft-reveal{transition-property:opacity,translate,background,border-color;transition-duration:.38s,.45s,.2s,.2s;transition-delay:0ms}
+ .soft-pending{translate:0 14px}
+ .soft-arrived{translate:0 0}
+ .build-mobile .build-caption:not([hidden]){animation:none}
+ .cinema-film,.film-window{animation:hero-detail-arrive .5s ease-out both}
+ dialog.choice-dialog::backdrop{backdrop-filter:none}
+}
+/* Reading size is set for a handheld screen, not a scaled-down desktop. */
+@media(max-width:1000px){
+ .section-heading>div,.faq>div,.questions{min-width:0;max-width:100%}
+ .section-heading h2,.faq h2,.questions .faq-question{overflow-wrap:anywhere}
+ .cinema .hero-service,.welcome-heading p,.welcome-answer p,
+ .section-heading>p,.explorer-content>p,.build-intro,
+ .build-mobile-frame .build-caption p,.about-copy>p,
+ .steps p,.faq-intro>p,.questions .faq-answer p,
+ .contact-copy>p,.contact-form>p:not(.form-note){font-size:16px;line-height:1.8}
+ .cinema .hero-service strong{font-size:21px;line-height:1.5}
+ .cinema .hero-service>span{font-size:14px;line-height:1.7}
+ .cinema-copy>.eyebrow,.faq-intro .eyebrow,.explorer-content .eyebrow{font-size:12px;line-height:1.7}
+ .cinema+.trust-bar .trust-inner{font-size:13px;line-height:1.7}
+ .cinema .film-caption{font-size:12px;line-height:1.6}
+ .choice-text small{font-size:14px;line-height:1.6}
+ .welcome-answer a,.expertise-bottom,.explorer-hint,.explorer-tags span,
+ .field figcaption p,.field figcaption small,.next-step-note,
+ .contact-form .form-note{font-size:14px;line-height:1.75}
+ .about-copy dd{font-size:15px;line-height:1.75}
+ .company-record p,.company-record a{font-size:14px;line-height:1.75}
+ .questions summary .faq-question{font-size:17px;line-height:1.6}
+ .form-grid label,.contact-form .form-extra summary{font-size:15px}
+ .contact-form .choice-trigger{font-size:16px;min-height:54px}
+ :root .cinema .hero-actions-row>.button,:root .explorer-content .button,
+ :root .contact-form .button{font-size:16px;min-height:56px}
+ .cinema .hero-actions-row .cinema-discover,.inline-link,.build-next{font-size:14px;min-height:44px}
+ :root .build-mobile-frame .build-chapters button{font-size:15px;min-height:48px}
+ .language-picker .choice-trigger{font-size:14px}
+ .choice-option{font-size:16px}
+ .footer-bottom{font-size:12px;line-height:1.7;flex-wrap:wrap;gap:16px}
+ .footer-bottom button,.back-top{font-size:13px;min-height:44px}
+ .mobile-contact a:first-child{font-size:14px}
+}
+@media(min-width:361px) and (max-width:600px){
+ .header .brand img{width:40px;height:40px}
+ .header .brand strong{font-size:16px}
+ .header .brand small{font-size:8px;letter-spacing:.8px}
+}
+@media(max-width:360px){
+ .language-picker .choice-trigger{font-size:13px}
+ .mobile-contact a:first-child{font-size:13px}
+ .cinema+.trust-bar .trust-inner{gap:16px 12px}
+}
+@media(max-width:600px){
+ .cinema{padding-top:16px}
+ .cinema-copy>.eyebrow{margin-bottom:12px}
+}
+/* Keep the registry arrow in the text flow, including wrapped mobile lines. */
+.trust-inner a{display:block;min-width:0}
+.trust-inner a b{display:inline;font-size:1em;white-space:nowrap}
+
+/* Trade selection stays planted; feedback comes from color and the image. */
+.explorer-tabs button,
+.explorer-tabs button:hover,
+.explorer-tabs button:active,
+.explorer-tabs button[aria-selected=true]{transform:none!important;transition-delay:0ms}
+.explorer-tabs button.soft-arrived{translate:none}
+.explorer-tabs button:hover svg{transform:none}
+.explorer-tabs button[aria-selected=true]{background:var(--lime);border-color:#a9ca57;box-shadow:inset 0 0 0 1px #98b95344}
+.explorer-tabs button:focus-visible{outline:2px solid var(--ink);outline-offset:4px}
+/* Avoid browser scroll anchoring to changing copy below the selected tab. */
+.explorer-panel{overflow-anchor:none}
+.explorer-photo img{transition:none}
+.explorer-photo .trade-photo-previous{z-index:1;pointer-events:none}
+.explorer-photo:after{z-index:2;pointer-events:none}
+.explorer-photo-label,.explorer-photo>#explorer-number{z-index:3}
+@media(hover:hover) and (pointer:fine){
+ .explorer-tabs button:not([aria-selected=true]):hover{background:#e2edce;border-color:#a9bf8a;box-shadow:inset 0 0 0 1px #a9bf8a33}
+}
+
+/* The moving edge follows the photo wipe; no layout changes or blurred filters. */
+.trade-photo-wipe{position:absolute;inset:0;z-index:2;pointer-events:none;border-right:2px solid #d7eea5;background:linear-gradient(to right,transparent calc(100% - 22px),#d7eea526);will-change:transform,opacity}
+
+/* Underline only the label, never the gap, external-link arrow, or file badge. */
+.company-record a,.trust-inner a{text-decoration:none}
+.company-record a .link-label,.trust-inner a .link-label{display:inline;text-decoration-line:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-skip-ink:none}
+.trust-inner a .link-label{text-decoration-color:#78965b}
+.trust-inner a:hover .link-label{text-decoration-color:currentColor}
+
+/* Audit: clear input states, accessible targets, and consistent modal surfaces. */
+.contact-form input[aria-invalid=true]{border:2px solid #a34932;background:#fffaf6}
+.contact-form input[aria-invalid=true]:focus{box-shadow:0 0 0 3px #a3493218}
+.contact-form input[type=tel]{text-align:start}
+/* Hebrew prompt reads from the right; entered telephone digits stay LTR. */
+html[dir=rtl] .contact-form input[type=tel]:placeholder-shown{text-align:right}
+.contact-form .validation-summary:focus{outline:none;box-shadow:0 0 0 3px #a349321a}
+/* Clip the decorative circle without creating an internal scroll container.
+   overflow:hidden let input focus scroll the whole contact grid by 300px. */
+.contact.section{overflow:clip}
+.contact-details a,.expertise-bottom>a{display:flex;align-items:center;min-height:44px;width:fit-content}
+.contact-details a:hover,.expertise-bottom>a:hover{color:#48672b}
+.contact-details a[href^="mailto:"]{direction:ltr;overflow-wrap:anywhere}
+.extra-fields summary{gap:12px;font-size:15px;line-height:1.6;padding-block:14px}
+.extra-fields summary>span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.extra-fields summary span{font-size:13px}
+.extra-fields summary b{font-size:20px;font-weight:400;line-height:1;transition:rotate .25s}
+.extra-fields[open] summary b{rotate:45deg}
+.extra-fields[open] summary{margin-bottom:6px}
+html:has(dialog[open]){overflow:hidden;scrollbar-gutter:stable}
+#photo-viewer{border-radius:20px}
+#photo-viewer .gallery-toolbar{padding-bottom:max(18px,env(safe-area-inset-bottom))}
+@media(max-width:600px){
+ .cinema{gap:20px}
+ .cinema h1{margin-bottom:16px}
+ .cinema .hero-service{margin-bottom:16px}
+ .cinema .film-caption{margin-top:16px}
+ .contact-details{gap:2px}
+ .extra-fields summary{font-size:15px}
+ .extra-fields summary span{font-size:14px}
+ footer{padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+}
+@media(hover:none){
+ .questions details:hover{transform:none}
+ .welcome-options>button:hover{transform:none}
+}
+@media(prefers-reduced-motion:reduce){.extra-fields summary b{transition:none}}
+
+.explorer-foot>a{display:inline-flex;align-items:center;min-height:44px}
+@media(max-width:600px){
+ .welcome-options>button{min-height:96px;padding-block:12px}
+ .welcome-options>button .choice-visual{width:60px;height:60px}
+ .welcome-options>button .choice-visual svg{width:60px;height:60px}
+ .steps li{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:14px}
+ .steps li .step-num{grid-column:1;grid-row:1}
+ .steps li h3{grid-column:2;grid-row:1;margin:0;font-size:18px;line-height:1.5}
+ .steps li p{grid-column:1 / -1;margin:0;font-size:16px;line-height:1.8}
+}
+
+.welcome-answer #welcome-next,.welcome-answer #welcome-next:hover{text-decoration:none}
+#welcome-next .link-label{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;text-decoration-skip-ink:none}
+
+/* Let the actual work carry the image; decorative numbering obscured details. */
+.explorer-photo>#explorer-number{display:none}
+@media(min-width:1001px){
+ .welcome-heading p,.welcome-answer p,.section-heading>p,
+ .explorer-content>p,.about-copy>p,.contact-copy>p{font-size:16px;line-height:1.8}
+ .steps p,.documentary-grid figcaption p,.company-record p{font-size:15px;line-height:1.8}
+ .choice-text small,.explorer-foot{font-size:14px;line-height:1.75}
+ .expertise.section,.about.section,.process.section,.contact.section{padding-block:88px}
+}
+
+/* Equal documentary cards: aligned edges, consistent crops and caption space. */
+.field .documentary-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;grid-auto-rows:1fr}
+.field .documentary-grid figure{display:grid;grid-template-rows:auto 1fr;min-width:0}
+.field .documentary-grid figcaption{align-items:flex-start}
+.field .documentary-grid figcaption>span{align-self:center}
+.field .documentary-grid .field-tall{margin-top:0}
+.field .documentary-grid .field-wide img,.field .documentary-grid .field-tall img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.field .documentary-grid .field-tall img{object-position:50% 20%}
+@media(max-width:600px){
+ .field .documentary-grid{grid-template-columns:minmax(0,1fr)}
+ .field .documentary-grid .field-wide img,.field .documentary-grid .field-tall img{aspect-ratio:1/1}
+}
+
+/* Center the footage itself, rather than the footage plus its caption. */
+@media(min-width:1001px){
+ .cinema .film-caption{position:absolute;inset-block-start:100%;margin-top:22px}
+}
+@media(max-width:1000px){
+ body:is(.contact-in-view,.editing-form) .floating-contact{visibility:hidden;pointer-events:none}
+}
+
+/* A clean brand silhouette, shared by the floating link and mobile action bar. */
+.floating-contact .whatsapp-icon,.mobile-whatsapp .whatsapp-icon{width:23px;height:23px;fill:currentColor;stroke:none;flex-shrink:0}
+.floating-contact{box-shadow:0 6px 20px #173f351a}
+.floating-contact .whatsapp-icon{color:#f4f7ed}
+.contact-form :is(input,textarea):focus-visible{outline:none;border-color:#66883a;box-shadow:0 0 0 3px #66883a24}
+.contact-form input[aria-invalid=true]:focus-visible{border-color:#a34932;box-shadow:0 0 0 3px #a3493224}
+
+/* On a phone, show the real work before the action row pushes it below the fold. */
+@media(max-width:600px){
+ .cinema{row-gap:18px}
+ .cinema-copy{display:contents}
+ .cinema-copy>.eyebrow{order:0;margin:0}
+ .cinema h1{order:1;margin:0}
+ .cinema .hero-service{order:2;margin:0}
+ .cinema-media{order:3}
+ .cinema .hero-actions-row{order:4;margin-top:2px}
+ .cinema .film-caption{margin-top:14px;min-height:30px;padding-left:54px}
+}
+
+@media(min-width:1001px){
+ .contact-form>p:not(.form-note){font-size:16px;line-height:1.75}
+ .form-grid label,.form-grid label>span,.next-step-note{font-size:14px;line-height:1.75}
+ .contact-form .form-note{font-size:12px;line-height:1.75}
+ .about-copy .company-record p,.about-copy .company-record a,.about-copy dd{font-size:15px;line-height:1.8}
+ .build-chapters button{font-size:14px}
+ .build-caption p{font-size:16px;line-height:1.8}
+ .cinema+.trust-bar .trust-inner{font-size:13px}
+ .footer-bottom,.footer-bottom button{font-size:12px}
+}
+@media(max-width:360px){
+ html:is(:lang(th),:lang(hi),:lang(si)) .cinema h1{font-size:28px;line-height:1.4}
+}
+/* Older section rules must not shrink useful supporting copy on handhelds. */
+@media(max-width:1000px){
+ .explorer-content .explorer-hint,.explorer-foot,.explorer-foot>a,
+ .about-copy .company-record p{font-size:14px;line-height:1.8}
+}
+
+/* A single fading rule for text actions, with the fade at the reading end. */
+:is(.inline-link,.build-next,.explorer-foot>a,.cinema .hero-actions-row .cinema-discover){
+ --rule-direction:to left;
+ border-bottom:1px solid transparent;
+ background-image:linear-gradient(var(--rule-direction),currentColor 0%,currentColor 55%,transparent 100%);
+ background-size:100% 1px;background-position:center bottom;background-repeat:no-repeat;
+ text-decoration:none;
+}
+html[dir=ltr] :is(.inline-link,.build-next,.explorer-foot>a,.cinema .hero-actions-row .cinema-discover){--rule-direction:to right}
+:is(.inline-link,.build-next,.explorer-foot>a,.cinema .hero-actions-row .cinema-discover):is(:hover,:focus-visible){border-bottom-color:transparent}
+@media(max-width:600px){
+ .faq-intro{padding:0;display:grid;grid-template-columns:56px minmax(0,1fr);column-gap:16px}
+ .faq-intro .faq-orbit{position:relative;inset:auto;grid-column:1;grid-row:1 / span 2;align-self:start;width:48px;height:48px;margin:0}
+ .faq-intro>.eyebrow{grid-column:2;grid-row:1}
+ .faq-intro>h2{grid-column:2;grid-row:2}
+ .faq .faq-intro>p{grid-column:1 / -1;grid-row:3;text-align:center;margin-top:24px}
+ .faq .faq-intro>p>.inline-link{display:flex;width:fit-content;margin:10px auto 0}
+}
+
+/* The final result is focusable so keyboard users find it after submission. */
+#form-status:focus-visible{outline:2px solid currentColor;outline-offset:4px;border-radius:8px}
+
+/* One WhatsApp control travels into the dock. The tray unfolds from its slot. */
+body.footer-in-view .floating-contact{visibility:hidden;pointer-events:none}
+@media(max-width:600px){
+ .mobile-contact{direction:rtl;padding:10px 16px max(10px,env(safe-area-inset-bottom));align-items:center;transform:none;background:transparent;border:0;box-shadow:none;isolation:isolate;visibility:hidden;pointer-events:none;transition:visibility 0s .36s}
+ .mobile-contact::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--cream);border-top:1px solid var(--ui-border);box-shadow:0 -6px 24px #153e3408;transform:scaleX(.12);transform-origin:left center;opacity:0;transition:transform .46s cubic-bezier(.22,1,.36,1),opacity .2s ease}
+ .mobile-contact.visible{transform:none;visibility:visible;pointer-events:auto;transition:visibility 0s}
+ .mobile-contact.visible::before{transform:scaleX(1);opacity:1}
+ .mobile-contact>a{opacity:0;transform:translateX(-14px);transition:opacity .15s ease,transform .3s cubic-bezier(.22,1,.36,1)}
+ .mobile-contact.visible>a{opacity:1;transform:none;transition:opacity .24s ease .10s,transform .4s cubic-bezier(.22,1,.36,1) .08s}
+ .mobile-contact a:first-child{direction:inherit;min-height:48px}
+ .mobile-contact .mobile-call{flex:0 0 48px;width:48px;height:48px;min-height:48px;padding:0;display:grid;place-items:center;background:var(--cream);color:var(--ink);border:1px solid var(--ui-border);border-radius:12px}
+ .mobile-contact .mobile-call svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+ .mobile-whatsapp-slot{flex:0 0 48px;width:48px;height:48px;pointer-events:none}
+ .floating-contact{left:16px;bottom:max(10px,env(safe-area-inset-bottom));width:48px;height:48px;min-width:48px;min-height:48px;padding:0;background:var(--cream);color:var(--ink);border:1px solid var(--ui-border);border-radius:var(--contact-float-radius,24px);transform:translateY(var(--contact-float-offset,-224px));box-shadow:0 4px 16px #153e3424;transition:box-shadow .35s ease,opacity .18s ease}
+ .floating-contact .whatsapp-icon{color:var(--ink)}
+ .floating-contact:hover{background:var(--cream);transform:translateY(var(--contact-float-offset,-224px))}
+ .floating-contact:hover svg{transform:none}
+ body:has(.mobile-contact.visible) .floating-contact{opacity:1;transform:translateY(0);visibility:visible;pointer-events:auto;box-shadow:none}
+ body:is(.contact-in-view,.footer-in-view,.editing-form) .floating-contact{opacity:0;visibility:hidden;pointer-events:none;transition:none}
+ html[dir=ltr] .mobile-contact a:first-child{direction:ltr}
+ .motion-off .mobile-contact,.motion-off .mobile-contact::before,.motion-off .mobile-contact>a,.motion-off .floating-contact{transition:none}
+ .motion-off .floating-contact{transform:translateY(var(--contact-start-offset,0px))}
+ .motion-off body:has(.mobile-contact.visible) .floating-contact{transform:none}
+}
+@media(max-width:600px) and (prefers-reduced-motion:reduce){
+ .mobile-contact,.mobile-contact::before,.mobile-contact>a,.floating-contact{transition:none!important}
+ .floating-contact{transform:translateY(var(--contact-start-offset,0px))}
+ body:has(.mobile-contact.visible) .floating-contact{transform:none}
+}
+
+/* Give the native email link a clear affordance and an app-independent fallback. */
+.email-contact{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px}
+.email-contact>a{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;min-height:44px;display:inline-flex;align-items:center}
+.copy-email{display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;width:22px;height:22px;padding:0;min-width:0;min-height:0;border:1px solid var(--line);border-radius:5px;background:transparent;color:var(--ink);cursor:pointer}
+.copy-email[hidden]{display:none}
+.copy-email svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.copy-email:hover{background:#153c350b}
+.copy-email:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.email-feedback{flex-basis:100%;margin:0;font-size:12px;line-height:1.7;color:var(--muted)}
+
+/* Native scrolling, with a quiet desktop rail matching the site's surfaces. */
+@media(min-width:1001px) and (pointer:fine) and (forced-colors:none){
+ html{scrollbar-width:thin;scrollbar-color:#879e88 var(--cream)}
+ @supports selector(::-webkit-scrollbar){
+  html{scrollbar-width:auto;scrollbar-color:auto}
+  html::-webkit-scrollbar{width:12px;height:12px}
+  html::-webkit-scrollbar-track{background:var(--cream)}
+  html::-webkit-scrollbar-thumb{min-height:48px;background:#879e88;background-clip:padding-box;border:3px solid var(--cream);border-radius:99px}
+  html::-webkit-scrollbar-thumb:hover{background-color:#587864}
+  html::-webkit-scrollbar-thumb:active{background-color:var(--ink)}
+  html::-webkit-scrollbar-corner{background:var(--cream)}
+  html::-webkit-scrollbar-button{display:none;width:0;height:0}
+ }
+}
+
+/* The navigation surface contracts into the existing logo, which never leaves.
+   Insets follow its measured position in RTL/LTR and every responsive layout. */
+.header{--nav-corner:14px}
+.header,.header.scrolled,.header.header-hidden{background:transparent;backdrop-filter:none;border-color:transparent;box-shadow:none;transform:none;transition:none;isolation:isolate}
+.header-surface{position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--cream);border-bottom:1px solid transparent;border-radius:0 0 var(--nav-corner) var(--nav-corner);clip-path:inset(0 0 0 0 round 0 0 var(--nav-corner) var(--nav-corner));transition:clip-path .5s cubic-bezier(.22,1,.36,1),border-color .2s ease}
+.header.scrolled .header-surface{border-bottom-color:var(--ui-border)}
+.header.header-hidden{pointer-events:none}
+.header.header-hidden .header-surface{clip-path:inset(var(--logo-top,12px) var(--logo-right,16px) var(--logo-bottom,12px) var(--logo-left,calc(100% - 68px)) round var(--logo-radius,26px));border-bottom-color:transparent;transition:clip-path .44s cubic-bezier(.4,0,.2,1) .04s,border-color .15s ease}
+.header .brand{padding-block:6px;position:relative;opacity:1;transform:none;pointer-events:auto}
+.header .brand img{flex-shrink:0;transform:none;transition:none}
+.header .brand:hover img{transform:none}
+.header-hidden .brand{pointer-events:none}
+.header-hidden .brand img{pointer-events:auto}
+.header-hidden .brand::after{content:'';position:absolute;left:calc(var(--logo-local-x,20px) - var(--logo-radius,26px));top:50%;width:calc(var(--logo-radius,26px)*2);height:calc(var(--logo-radius,26px)*2);transform:translateY(-50%);border-radius:50%;pointer-events:auto}
+.header .brand-label{opacity:1;transform:translateX(0);transition:opacity .18s ease var(--nav-open-delay,50ms),transform .32s cubic-bezier(.16,1,.3,1) var(--nav-open-delay,50ms)}
+.header-inner>:is(nav,.language-picker,.header-cta,.menu-toggle){--nav-order:0;opacity:1;transform:translateX(0);transition:opacity .18s ease var(--nav-open-delay,120ms),transform .32s cubic-bezier(.16,1,.3,1) var(--nav-open-delay,120ms)}
+.header .header-inner>nav{--nav-order:1}
+.header-inner>:is(.language-picker,.menu-toggle){--nav-order:2}
+.header-inner>.header-cta{--nav-order:3}
+.header-hidden .brand-label,.header-hidden .header-inner>:is(nav,.language-picker,.header-cta,.menu-toggle){opacity:0;transform:translateX(var(--nav-shift,12px));pointer-events:none;transition:opacity .14s ease var(--nav-close-delay,0ms),transform .24s ease var(--nav-close-delay,0ms)}
+.header::after{content:none}
+.motion-off .header-surface,.motion-off .header .brand-label,.motion-off .header-inner>:is(nav,.language-picker,.header-cta,.menu-toggle){transition:none}
+@media(prefers-reduced-motion:reduce){
+ .header-surface,.header.header-hidden .header-surface,.header .brand-label,.header-inner>:is(nav,.language-picker,.header-cta,.menu-toggle){transition:none}
+}
+
+/* Readable word groups pass through the center of the viewport as the page scrolls. */
+.kinetic-track{position:relative;gap:clamp(22px,2.2vw,38px)}
+.kinetic-track>span,.kinetic-track>i{flex-shrink:0}
+.kinetic-track>i{display:flex;align-items:center;justify-content:center;line-height:1}
+@media(max-width:600px){
+ .kinetic-ribbon{padding-block:18px}
+ html .kinetic-ribbon .kinetic-track{font-size:clamp(32px,9.5vw,42px);line-height:1.5;gap:16px;letter-spacing:0}
+ .kinetic-track>span{padding-inline:2px}
+ .kinetic-track>i{font-size:.58em}
+ .kinetic-track .outline-word{-webkit-text-stroke:1.4px var(--ink)}
+ .kinetic-ribbon .kinetic-track{transition:none}
+}
+
+.kinetic-ribbon{position:relative}
+.kinetic-ribbon::before,.kinetic-ribbon::after{content:'';position:absolute;top:0;bottom:0;width:24px;z-index:1;pointer-events:none}
+.kinetic-ribbon::before{left:0;background:linear-gradient(to right,var(--ribbon-bg),transparent)}
+.kinetic-ribbon::after{right:0;background:linear-gradient(to left,var(--ribbon-bg),transparent)}
+@media(max-width:359px){html .kinetic-ribbon .kinetic-track{font-size:30px;gap:12px}}
+
+/* The mobile logo keeps its physical corner in every language; text keeps its own direction. */
+@media(max-width:1000px){
+ html[dir] .header .brand{direction:rtl}
+ html[dir=ltr] .header .brand-label{direction:ltr}
+}
+
+/* Presentation refinements: a direct, compact path into the project inquiry. */
+.contact-form:focus{outline:none}
+.welcome-answer>p:empty{display:none}
+.contact-form:focus-within{transform:none}
+.contact-form>.form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}
+.contact-form>.form-grid>label:not(.project-choice){grid-column:1/-1}
+.contact-form .project-choice{min-width:0}
+.contact-form .project-choice .choice-trigger{min-width:0;font-size:14px;padding-inline:12px}
+.contact-visual{width:168px;height:68px;margin-bottom:20px;pointer-events:none}
+.contact-visual svg{display:block;width:100%;height:100%;overflow:visible;stroke:var(--ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.contact-thread{stroke:#8ca470;stroke-dasharray:3 6}
+.contact-bubble rect{fill:#faf9f3;stroke:#94a87d}
+.contact-bubble.second rect{fill:#dcebbd}
+.contact-bubble{animation:contact-float 5.6s ease-in-out infinite;animation-play-state:paused}
+.contact-bubble.second{animation-delay:-2.8s}
+.contact-dot{fill:var(--ink);stroke:none;animation:contact-reply 3.6s ease-in-out infinite;animation-play-state:paused}
+.contact-dot.two{animation-delay:.18s}.contact-dot.three{animation-delay:.36s}
+.contact-signal{fill:#7e9f49;stroke:none;animation:contact-signal 5.6s ease-in-out infinite;animation-play-state:paused}
+.contact-visible :is(.contact-bubble,.contact-dot,.contact-signal){animation-play-state:running}
+@keyframes contact-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes contact-reply{0%,16%,40%,100%{opacity:.4;transform:translateY(0)}26%{opacity:1;transform:translateY(-2px)}}
+@keyframes contact-signal{0%,20%{opacity:0;transform:translate(-28px,-11px)}30%{opacity:.8}65%{opacity:.8}78%,100%{opacity:0;transform:translate(29px,12px)}}
+@media(max-width:1000px){
+ .contact-visual{width:136px;height:55px;margin-bottom:16px}
+ footer{padding-bottom:0}
+ footer .footer-bottom{padding-bottom:max(22px,env(safe-area-inset-bottom))}
+ footer .footer-top{padding-bottom:24px}
+ .contact.section{padding-bottom:44px}
+}
+@media(max-width:600px){
+ .contact-form>.form-grid{grid-template-columns:1fr;gap:14px;margin-top:18px}
+ .contact-form .project-choice .choice-trigger{font-size:16px}
+ .contact-form .extra-fields{margin-top:12px}
+ .contact-form .extra-fields summary{padding-block:12px}
+ .contact-form>.next-step-note{margin-top:14px;padding-top:10px;font-size:14px;line-height:1.65}
+ .contact-form>.button{margin-top:14px}
+}
+
+/* Carry the selected project stage straight into the enquiry form. */
+#welcome-next.welcome-continue{margin-top:14px;padding:13px 22px;min-height:52px;gap:18px;border:1px solid var(--ink);border-radius:14px;background:var(--ink);color:var(--cream);font-size:15px;line-height:1.5;box-shadow:0 5px 16px #173f3510;transition:background .22s,box-shadow .22s}
+#welcome-next.welcome-continue .link-label{text-decoration:none}
+#welcome-next.welcome-continue>span:last-child{color:var(--lime);transition:transform .22s}
+@media(hover:hover){#welcome-next.welcome-continue:hover{background:#235547;box-shadow:0 8px 22px #173f3520}#welcome-next.welcome-continue:hover>span:last-child{transform:translateX(-3px)}[dir=ltr] #welcome-next.welcome-continue:hover>span:last-child{transform:translateX(3px)}}
+@media(max-width:600px){#welcome-next.welcome-continue{width:100%;justify-content:space-between;text-align:start}}
+
+/* Quiet photo affordance: native zoom cursor and one compact corner icon. */
+.documentary-grid .photo-open{cursor:zoom-in}
+.documentary-grid .photo-open::after{content:none;display:none}
+.photo-zoom-hint{position:absolute;inset:auto auto 16px 16px;z-index:2;display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffffb3;border-radius:13px;background:#faf9f3ed;color:var(--ink);box-shadow:0 3px 12px #102c2524;pointer-events:none;transition:background .22s,color .22s,transform .3s cubic-bezier(.2,.8,.2,1),border-color .22s}
+.photo-zoom-hint svg{width:23px;height:23px;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+@media(hover:hover) and (pointer:fine){.photo-open:hover .photo-zoom-hint{background:var(--ink);color:var(--lime);border-color:#ffffff60;transform:translateY(-2px)}.photo-open:hover .photo-zoom-hint svg{transform:scale(1.08)}}
+.photo-open:focus-visible{outline:3px solid var(--lime);outline-offset:-5px}
+.photo-open:focus-visible .photo-zoom-hint{background:var(--ink);color:var(--lime);border-color:var(--lime)}
+@media(max-width:600px){.photo-zoom-hint{inset:auto auto 12px 12px;width:40px;height:40px;border-radius:12px}.photo-zoom-hint svg{width:21px;height:21px}}
+
+/* Mobile opening: one branded scene for the headline AND the service copy.
+   Content-sized rows protect translations; the short final row exposes the
+   footage without creating a dead gap between the message and its action. */
+@media(max-width:600px){
+ .cinema{--hero-inset:23px;grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto auto 64px auto;gap:18px;padding:28px var(--hero-inset) 26px;align-items:start}
+ .cinema-copy{display:contents}
+ .cinema-copy>.eyebrow{grid-area:1/1;position:relative;z-index:2;margin:0;color:#f6f7ed}
+ .cinema-copy>.eyebrow::before{background:var(--lime)}
+ .cinema h1{grid-area:2/1;position:relative;z-index:2;margin:0;color:var(--cream);text-shadow:0 2px 16px #173f3530}
+ .cinema h1 em{color:inherit}
+ .cinema h1 em::after{height:4px;bottom:1px}
+ .cinema .hero-service{grid-area:3/1;position:relative;z-index:2;margin:4px 0 0;max-width:none;color:var(--cream);text-shadow:0 1px 10px #173f3530}
+ .cinema .hero-service strong{color:var(--lime)}
+ .cinema .hero-service>span{color:var(--cream);margin:8px 0 12px}
+ .cinema .hero-actions-row{grid-area:5/1;position:relative;z-index:2;margin-top:6px;gap:12px}
+ .cinema .hero-actions-row .cinema-discover{max-width:calc(100% - 96px);text-align:center;min-height:48px}
+ .cinema-media{grid-area:1/1/5/2;align-self:stretch;justify-self:stretch;position:relative;width:auto;max-width:none;min-width:0;margin:-28px calc(-1 * var(--hero-inset)) 0;pointer-events:none;z-index:0}
+ .cinema .cinema-film{position:absolute;inset:0;border:0;border-radius:0;background:var(--ink);box-shadow:none;animation:none;translate:none;overflow:hidden}
+ .cinema .cinema-film::before,.cinema .cinema-film::after{display:none}
+ .cinema .film-window{position:absolute;inset:0;aspect-ratio:auto;border-radius:0;animation:none;clip-path:none}
+ .cinema .film-window::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,#173f35c5 0%,#173f35c5 calc(100% - 80px),#173f3570 calc(100% - 24px),#173f354d 100%)}
+ .cinema .film-window video{inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+ .cinema .film-caption{display:none}
+}
+@media(max-width:360px){.cinema{--hero-inset:20px;grid-template-rows:auto auto auto 56px auto}}
+
+/* Explain required fields before handoff, without turning the empty form red. */
+.contact-form .field-hint,.contact-form .phone-feedback{display:block;margin-top:8px;font-size:13px;line-height:1.65;font-weight:400;color:#526452}
+.contact-form .phone-feedback{color:var(--ink);font-weight:500}
+.contact-form .phone-feedback[hidden]{display:none}
+.contact-form input.field-valid:not([aria-invalid=true]){border-color:#759650}
+.contact-form .form-readiness{margin:16px 0 0;font-size:14px;line-height:1.6;color:#526452}
+.contact-form .form-readiness.is-ready{color:var(--ink)}
+.contact-form .form-readiness+.button{margin-top:10px}
+.contact-form input[aria-invalid=true]{border-color:#a24435;box-shadow:0 0 0 2px #a2443510}
+.contact-form .field-error{font-size:13px;line-height:1.65;margin-top:6px}

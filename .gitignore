@@ -1,0 +1,16 @@
+research/
+yanai-site-deploy.tar.gz
+
+# Local work and generated review artifacts
+.codex-attachments/
+**/node_modules/
+yanai-site/.openai/
+yanai-site/qa/
+.env
+.env.*
+*.log
+
+# Superseded video encodes retained locally
+yanai-site/dist/assets/*.mp4
+!yanai-site/dist/assets/yanai-hero-sites-60fps-web.mp4
+!yanai-site/dist/assets/yanai-hero-sites-60fps-web-mobile.mp4

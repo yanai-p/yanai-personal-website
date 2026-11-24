@@ -1,0 +1,16 @@
+/* Preserve the work and brand marks in the owner's documentary photographs. */
+.about-visual > .team-preparation-photo {
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  object-position: 50% 65%;
+}
+.field .documentary-grid .field-wide img {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-position: 65% 50%;
+}
+@media (max-width: 600px) {
+  .field .documentary-grid .field-wide img { aspect-ratio: 1 / 1; }
+}
+.field .documentary-grid .field-tall img{height:auto;aspect-ratio:4/5;object-position:50% 45%}

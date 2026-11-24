@@ -1,0 +1,97 @@
+/* Language controls stay visible outside the collapsible mobile navigation. */
+.language-picker{position:relative;display:flex;align-items:center;gap:7px;flex-shrink:0;border:1px solid #b9c7ae;border-radius:24px;padding:0 11px;background:var(--cream);min-height:44px;color:var(--ink);transition:background .2s,border-color .2s}
+.language-picker:hover,.language-picker:focus-within{background:#e8efdc;border-color:var(--green)}
+.language-picker svg{width:18px;height:18px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.4}
+.language-picker select{max-width:112px;min-height:42px;border:0;background:transparent;color:inherit;cursor:pointer;font-size:13px;font-family:Arial,"Nirmala UI","Leelawadee UI",sans-serif;outline-offset:2px;padding:0 3px}
+.language-picker option{background:var(--cream);color:var(--ink)}
+.language-picker .sr-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.header-inner{gap:18px}.header nav{gap:22px}
+.photo-open:after{content:attr(data-zoom-label)}
+html[dir=ltr] .header nav a:after{right:auto;left:0}
+html[dir=ltr] :is(.explorer-content,.film-bottom button,.kinetic-track span){direction:ltr}
+html[dir=ltr] :is(.welcome-options>button,.explorer-tabs button,.photo-open,.hero-proof>button,.contact-form input[type=tel]){text-align:left}
+html[dir=ltr] :is(h1,h2,h3,.eyebrow,.brand strong){letter-spacing:normal}
+html[dir=ltr] .cinema h1{font-size:clamp(48px,4.9vw,80px);line-height:1.16}
+html[dir=ltr] .hero-line{overflow:visible}
+html[dir=ltr] .cinema-copy{min-width:0}
+html[dir=ltr] .cinema-copy .eyebrow{max-width:40em;letter-spacing:.4px}
+html[dir=ltr] .brand strong{font-size:20px}
+html[dir=ltr] .header nav{font-size:12px}
+html[dir=ltr] .hero-actions-row{flex-wrap:wrap;gap:15px 22px}
+html[dir=ltr] .explorer-tabs button strong{font-size:clamp(14px,1.35vw,20px);line-height:1.4;overflow-wrap:anywhere}
+html[dir=ltr] .explorer-tabs button{min-width:0}
+html[dir=ltr] .explorer-content h3{font-size:clamp(30px,3vw,46px);line-height:1.25}
+html[dir=ltr] :is(.section-heading h2,.contact h2,.about h2,.faq h2,.build-copy h2){font-size:clamp(32px,3.5vw,53px);line-height:1.2}
+html[dir=ltr] .build-caption h3{font-size:21px;line-height:1.45}
+html[dir=ltr] .build-captions{min-height:145px}
+html[dir=ltr] .build-chapters{flex-wrap:wrap}
+html[dir=ltr] .welcome-heading h2{font-size:clamp(30px,3vw,42px)}
+html[dir=ltr] .welcome-options .choice-text strong{font-size:16px;line-height:1.4}
+html[dir=ltr] .welcome-options .choice-text small{line-height:1.6}
+html[dir=ltr] .questions details p{padding-inline:0 24px}
+html[dir=ltr] .selected-trade-note{border-right:0;border-left:3px solid #7e9e46}
+html[dir=ltr] .contact-details bdi{margin-right:0;margin-left:10px}
+html[dir=ltr] :is(.contact-form,.questions summary){text-align:start}
+html[dir=ltr] .contact-form h3{font-size:25px;line-height:1.4;letter-spacing:normal}
+html[dir=ltr] .contact-form .button{font-size:15px;gap:14px}
+html[dir=ltr] .image-note{right:auto;left:-15px}
+html[dir=ltr] .film-stamp{font-size:24px;line-height:1.3}
+html[dir=ltr] .film-bottom{flex-wrap:wrap}
+html[dir=ltr] .kinetic-track{font-size:clamp(38px,6vw,85px);line-height:1.6;letter-spacing:normal}
+html[dir=ltr] .steps{gap:24px}
+html[dir=ltr] .steps h3{font-size:20px;line-height:1.4}
+html[dir=ltr] .trust-inner{font-size:12px}
+html[dir=ltr] :is(.button,.inline-link,.welcome-options button){white-space:normal}
+@font-face{font-family:YanaiThai;src:url('assets/fonts/noto-thai.ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:YanaiHindi;src:url('assets/fonts/noto-devanagari.ttf') format('truetype');font-weight:100 900;font-display:swap}
+@font-face{font-family:YanaiSinhala;src:url('assets/fonts/noto-sinhala.ttf') format('truetype');font-weight:100 900;font-display:swap}
+html:lang(th){--font:YanaiThai,"Leelawadee UI",Tahoma,sans-serif}
+html:lang(hi){--font:YanaiHindi,"Nirmala UI",sans-serif}
+html:lang(si){--font:YanaiSinhala,"Nirmala UI","Sinhala Sangam MN",sans-serif}
+html:lang(zh-CN){--font:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+html:is(:lang(th),:lang(hi),:lang(si)) :is(h1,h2,h3,.eyebrow,.kinetic-track){letter-spacing:0;line-height:1.6}
+html:is(:lang(th),:lang(hi),:lang(si)) .cinema h1{font-size:clamp(40px,4.1vw,66px);line-height:1.55}
+html:is(:lang(th),:lang(hi),:lang(si)) .hero-word{padding-block:.08em}
+html:is(:lang(th),:lang(hi),:lang(si)) .eyebrow{font-size:12px}
+html:lang(si) :is(.build-copy h2,.section-heading h2,.about h2,.contact h2){font-size:clamp(28px,3vw,44px)}
+html:lang(si) .build-captions{min-height:180px}
+@media(min-width:1001px) and (max-width:1250px){.header-inner{gap:12px}.header nav{gap:14px}.header-cta{display:none}}
+@media(max-width:1000px){
+ .header-cta{display:none}
+ .header-inner{gap:12px}.language-picker{margin-inline-start:auto}.header nav{gap:22px}
+ html[dir=ltr] .header nav{font-size:16px}
+ html[dir=ltr] .build-captions{min-height:160px}
+ html[dir=ltr] .cinema h1{font-size:clamp(44px,6vw,68px)}
+}
+@media(min-width:801px) and (max-width:1000px){
+ .menu-toggle{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;width:44px;height:44px;flex-shrink:0;border:1px solid var(--line);border-radius:8px;background:transparent}
+ .menu-toggle span{width:18px;height:1px;background:var(--ink)}
+ .header nav{display:none;position:absolute;top:100%;inset-inline:0;background:var(--cream);padding:20px;border-top:1px solid var(--line);box-shadow:0 12px 20px #173f3510}
+ .header nav.open{display:flex;flex-direction:column;gap:0}
+ .header nav a{padding:14px}
+}
+@media(max-width:600px){
+ .header-inner{gap:8px}.language-picker{padding-inline:7px;gap:3px;min-height:42px}.language-picker select{font-size:12px;max-width:87px}.language-picker svg{width:16px;height:16px}
+ .header .brand{gap:6px}.header .brand img{width:36px;height:36px}.header .brand strong,html[dir=ltr] .header .brand strong{font-size:14px}.header .brand small{font-size:6px;letter-spacing:1px}
+ .menu-toggle{flex-shrink:0}
+ html[dir=ltr] .cinema h1{font-size:clamp(38px,9.5vw,55px);line-height:1.23}
+ html:is(:lang(th),:lang(hi),:lang(si)) .cinema h1{font-size:clamp(31px,8.3vw,46px);line-height:1.5}
+ html[dir=ltr] .cinema-copy .eyebrow{font-size:11px;line-height:1.7}
+ html[dir=ltr] .hero-actions-row .button{font-size:14px;gap:15px}
+ html[dir=ltr] .hero-actions-row{align-items:stretch}.cinema-discover{min-height:44px}
+ html[dir=ltr] .explorer-tabs button strong{font-size:13px}
+ html[dir=ltr] .explorer-content h3{font-size:29px}
+ html[dir=ltr] .explorer-content .button{font-size:14px;gap:15px}
+ html[dir=ltr] .build-chapters{gap:6px}.build-chapters button{min-width:0}
+ html[dir=ltr] .build-chapters button{padding:9px 12px;font-size:12px}
+ html[dir=ltr] .build-caption h3{font-size:19px}
+ html[dir=ltr] :is(.section-heading h2,.contact h2,.about h2,.faq h2,.build-copy h2){font-size:31px}
+ html:is(:lang(th),:lang(hi),:lang(si)) :is(.section-heading h2,.contact h2,.about h2,.faq h2,.build-copy h2){font-size:28px;line-height:1.5}
+ html[dir=ltr] .welcome-options .choice-text strong{font-size:16px}
+ html[dir=ltr] .film-stamp{font-size:19px}
+ html[dir=ltr] .contact-form h3{font-size:23px}
+ html[dir=ltr] .trust-inner{font-size:11px}
+ html[dir=ltr] .image-note{left:0}
+ html[dir=ltr] .gallery-caption{overflow-wrap:anywhere}
+}
+@media(max-width:360px){.header-inner.wrap{width:calc(100% - 24px)}.header .brand small{display:none}.language-picker select{max-width:76px}.language-picker svg{display:none}}
