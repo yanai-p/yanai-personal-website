@@ -115,6 +115,11 @@
     root.dir = next === 'he' ? 'rtl' : 'ltr';
     selector.value = next;
     translateTree(root);
+    // Keep language pages distinct; discard tracking parameters and section hashes.
+    const pageUrl = new URL('https://yanai-p.co.il/');
+    if (next !== 'he') pageUrl.searchParams.set('lang', next);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', pageUrl.href);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', pageUrl.href);
     document.querySelectorAll('.photo-open').forEach(button => button.dataset.zoomLabel = t('מבט מקרוב ↗'));
     if (persist) {
       try { localStorage.setItem('yanai-language', next); } catch {}
